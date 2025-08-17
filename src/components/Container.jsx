@@ -20,6 +20,7 @@ const Container = () => {
             return
         }
         setWeatherData(data)
+        setSearchCity("")
 
     }
     return (
