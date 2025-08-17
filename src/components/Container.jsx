@@ -10,7 +10,15 @@ const Container = () => {
         }
         const apiUrl = `https://api.weatherapi.com/v1/current.json?key=280a0a168aeb4a3496f30316251307&q=${searchCity}`
         const response = await fetch(apiUrl)
+        if (!response.ok) {
+            alert("Error")
+            return
+        }
         const data = await response.json()
+        if (data.error && data.error.code === 1006) {
+            alert("No Matching Cities Found")
+            return
+        }
         setWeatherData(data)
 
     }
